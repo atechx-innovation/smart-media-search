@@ -31,7 +31,7 @@ function setSession(res: Response, userId: string) {
   res.cookie("sid", token, { ...cookieOpts, maxAge: 7 * 24 * 60 * 60 * 1000 });
 }
 
-const publicUser = (u: { id: string; name: string; email: string }) => ({
+   const publicUser = (u: { id?: string; name: string; email: string }) => ({
   id: u.id, name: u.name, email: u.email,
 });
 
