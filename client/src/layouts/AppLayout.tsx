@@ -13,16 +13,20 @@ export default function AppLayout() {
   return (
     <ViewerProvider>
       <header className="border-b border-brand-100 bg-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
-          <span className="font-semibold text-brand-900">Smart Media Search AI</span>
-          <nav aria-label="Main" className="flex flex-1 flex-wrap gap-1 text-sm">
-            {LINKS.map(([to, label]) => (
-              <NavLink key={to} to={to} className={({ isActive }) => `rounded-lg px-3 py-1.5 transition ${isActive ? "bg-brand-100 text-brand-700" : "text-slate-600 hover:bg-brand-50"}`}>{label}</NavLink>
-            ))}
-          </nav>
-          <button onClick={logout} className="btn-secondary px-3 py-1.5" title="Log out"><LogOut className="h-4 w-4" />Log out</button>
-        </div>
-      </header>
+  <div className="mx-auto max-w-6xl px-4 py-3">
+    <div className="flex items-center justify-between gap-3">
+      <span className="font-semibold text-brand-900">Smart Media Search AI</span>
+      <button onClick={logout} aria-label="Log out" title="Log out" className="btn-secondary px-3 py-1.5">
+        <LogOut className="h-4 w-4" /><span className="hidden sm:inline">Log out</span>
+      </button>
+    </div>
+    <nav aria-label="Main" className="-mx-1 mt-2 flex gap-1 overflow-x-auto pb-1 text-sm">
+      {LINKS.map(([to, label]) => (
+        <NavLink key={to} to={to} className={({ isActive }) => `shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 transition ${isActive ? "bg-brand-100 text-brand-700" : "text-slate-600 hover:bg-brand-50"}`}>{label}</NavLink>
+      ))}
+    </nav>
+  </div>
+</header>
       <Outlet />
     </ViewerProvider>
   );
